@@ -1,0 +1,1 @@
+Aplikacja używa Javy w wersji 11
