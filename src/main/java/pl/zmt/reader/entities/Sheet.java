@@ -2,9 +2,7 @@ package pl.zmt.reader.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -13,9 +11,12 @@ public class Sheet {
 
     @Id
     @GeneratedValue
+    @Column(name="sheet_id")
     private Long id;
 
-    private Long user_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private User user;
 
     private Boolean confirmed;  //czy zablokowany do edycji
 

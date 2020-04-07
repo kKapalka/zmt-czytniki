@@ -12,9 +12,12 @@ public class ReadingAir {
 
     @Id
     @GeneratedValue
+    @Column(name="reading_air_id")
     private Long id;
 
-    private Long compressor_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="compressor_id")
+    private Compressor compressor;
 
     private Long counterValue;  //energia czynna
 
@@ -24,9 +27,13 @@ public class ReadingAir {
 
     private Long deliveredAir;  //wyprodukowane powietrze w m3
 
-    private Long user_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private User user;
 
-    private Long sheet_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="sheet_id")
+    private Sheet sheet;
 
     private Boolean modified;  //czy modyfikowany po pierwszym zapisie
 

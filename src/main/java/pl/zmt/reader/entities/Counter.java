@@ -11,6 +11,7 @@ public class Counter {
 
     @Id
     @GeneratedValue
+    @Column(name="counter_id")
     private Long id;
 
     private String number;
@@ -23,9 +24,7 @@ public class Counter {
 
     private Integer ratio;   //przekładnia (mnożnik)
 
-
     @Enumerated(EnumType.STRING)
-    @ElementCollection
-    private List<CounterType> roles;
+    private CounterType roles;
 
 }

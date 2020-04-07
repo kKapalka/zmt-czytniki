@@ -11,6 +11,7 @@ public class Compressor {
 
     @Id
     @GeneratedValue
+    @Column(name="compressor_id")
     private Long id;
 
     private String serialNumber;
@@ -25,9 +26,7 @@ public class Compressor {
 
     private Integer energyEfficiency; //wydajność w m3/kWh
 
-
     @Enumerated(EnumType.STRING)
-    @ElementCollection
-    private List<CompressorType> roles;
+    private CompressorType roles;
 
 }

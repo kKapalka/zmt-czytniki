@@ -2,9 +2,7 @@ package pl.zmt.reader.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -13,15 +11,22 @@ public class ReadingWaterHeatGas {
 
     @Id
     @GeneratedValue
+    @Column(name="reading_whg_id")
     private Long id;
 
-    private Long counter_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="counter_id")
+    private Counter counter;
 
     private Long counterValue;
 
-    private Long user_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private User user;
 
-    private Long sheet_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="sheet_id")
+    private Sheet sheet;
 
     private Boolean modified; //czy modyfikowany po pierwszym zapisie
 

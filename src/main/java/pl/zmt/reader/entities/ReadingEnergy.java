@@ -12,9 +12,12 @@ public class ReadingEnergy {
 
     @Id
     @GeneratedValue
+    @Column(name="reading_energy_id")
     private Long id;
 
-    private Long counter_id; //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="counter_id")
+    private Counter counter;
 
     private Long counterValue; // energia czynna
 
@@ -24,9 +27,13 @@ public class ReadingEnergy {
 
     private Integer pMax;  //moc maksymalna
 
-    private Long user_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private User user;
 
-    private Long sheet_id;  //dodać relację
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="sheet_id")
+    private Sheet sheet;
 
     private Boolean modified; //jeśli modyfikowany to data modyfikacji, else - data zapisu
 
