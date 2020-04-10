@@ -1,11 +1,12 @@
 package pl.zmt.reader.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity(name = "user")
 public class User {
 
@@ -22,8 +23,15 @@ public class User {
 
     private String lastName;
 
+    public User(String login, String password, String firstName, String lastName, UserRole roles) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.roles = roles;
+    }
+
     @Enumerated(EnumType.STRING)
-    @ElementCollection
-    private List<UserRole> roles;
+    private UserRole roles;
 
 }

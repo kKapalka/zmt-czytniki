@@ -1,11 +1,13 @@
 package pl.zmt.reader.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity(name = "counter")
 public class Counter {
 
@@ -25,6 +27,14 @@ public class Counter {
     private Integer ratio;   //przekładnia (mnożnik)
 
     @Enumerated(EnumType.STRING)
-    private CounterType roles;
+    private CounterType types;
 
+    public Counter(String number, String location, String description, Integer orderNumber, Integer ratio, CounterType types) {
+        this.number = number;
+        this.location = location;
+        this.description = description;
+        this.orderNumber = orderNumber;
+        this.ratio = ratio;
+        this.types = types;
+    }
 }
