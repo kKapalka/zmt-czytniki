@@ -10,13 +10,13 @@ import pl.zmt.reader.entities.*;
 public class Start {
 
     private UserRepository userRepository;
-    @Autowired
-    public Start(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private CompressorRepository compressorRepository;
 
     @Autowired
-    private CompressorRepository compressorRepository;
+    public Start(UserRepository userRepository, CompressorRepository compressorRepository) {
+        this.userRepository = userRepository;
+        this.compressorRepository = compressorRepository;
+    }
 
     @EventListener(ApplicationReadyEvent.class)   // Autorun funkcji po załadowaniu programu
     public void runExample() {
