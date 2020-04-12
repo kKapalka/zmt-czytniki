@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 // CRUD refers Create, Read, Update, Delete
 
 @Repository
-public interface CompressorRepository extends CrudRepository<Compressor, Long> {
+public interface ReadingAirRepository extends CrudRepository<ReadingAir, Long> {
 
 }
 

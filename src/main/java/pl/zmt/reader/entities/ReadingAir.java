@@ -1,12 +1,14 @@
 package pl.zmt.reader.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity(name = "readingair")
 public class ReadingAir {
 
@@ -39,4 +41,15 @@ public class ReadingAir {
 
     private Date date;
 
+    public ReadingAir(Compressor compressor, Long counterValue, Long workingHours, Long loadHours, Long deliveredAir, User user, Sheet sheet, Boolean modified, Date date) {
+        this.compressor = compressor;
+        this.counterValue = counterValue;
+        this.workingHours = workingHours;
+        this.loadHours = loadHours;
+        this.deliveredAir = deliveredAir;
+        this.user = user;
+        this.sheet = sheet;
+        this.modified = modified;
+        this.date = date;
+    }
 }
