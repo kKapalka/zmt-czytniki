@@ -2,27 +2,39 @@ package pl.zmt.reader.entities;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/compressor")
+@RequestMapping("/compressors")
 public class CompressorController {
 
-
     @Autowired
-    private CompressorRepository compressorRepository;
+    CompressorRepository compressorRepository;
 
-    @GetMapping("getall")
+    @GetMapping
     public @ResponseBody
     Iterable<Compressor> getAllCompressors() {
-        // This returns a JSON or XML with the compressors
         return compressorRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public @ResponseBody
+    Optional<Compressor> getCompressorById(@PathVariable Long id) {
+        return compressorRepository.findById(id);
+    }
+
+    @PostMapping("/add")
+    public Compressor addCompressor(@RequestBody Compressor compressor) {
+        return compressorRepository.save(compressor);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delCompressor(@PathVariable Long id) {
+        compressorRepository.deleteById(id);
+    }
 
 }
