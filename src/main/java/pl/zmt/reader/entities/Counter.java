@@ -2,6 +2,7 @@ package pl.zmt.reader.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.zmt.reader.entities.enums.CounterType;
 
 import javax.persistence.*;
 

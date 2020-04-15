@@ -5,6 +5,10 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import pl.zmt.reader.entities.*;
+import pl.zmt.reader.entities.enums.CompressorType;
+import pl.zmt.reader.entities.enums.UserRole;
+import pl.zmt.reader.repositories.CompressorRepository;
+import pl.zmt.reader.repositories.UserRepository;
 
 @Component
 public class Start {

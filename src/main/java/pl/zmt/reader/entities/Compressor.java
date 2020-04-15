@@ -2,9 +2,9 @@ package pl.zmt.reader.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.zmt.reader.entities.enums.CompressorType;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

@@ -1,10 +1,12 @@
-package pl.zmt.reader.entities;
+package pl.zmt.reader.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.zmt.reader.entities.Renovation;
+import pl.zmt.reader.repositories.RenovationRepository;
 
 import java.util.Optional;
 
@@ -17,34 +19,34 @@ public class RenovationController {
     RenovationRepository renovationRepository;
 
     @GetMapping
-    public ResponseEntity getAllRenovations() {
+    public ResponseEntity<Iterable<Renovation>> getAllRenovations() {
         Iterable<Renovation> renovations = renovationRepository.findAll();
         return ResponseEntity.ok(renovations);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity renovationById (@PathVariable Long id) {
+    public ResponseEntity<Optional<Renovation>> renovationById (@PathVariable Long id) {
         Optional<Renovation> renovationById = renovationRepository.findById(id);
         return ResponseEntity.ok(renovationById);
     }
 
     @PostMapping("/add")
-    public ResponseEntity addRenovation(@RequestBody Renovation renovation) {
+    public ResponseEntity<Renovation> addRenovation(@RequestBody Renovation renovation) {
         Renovation savedRenovation = renovationRepository.save(renovation);
         return ResponseEntity.ok(savedRenovation);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delRenovation(@PathVariable Long id) {
+    public ResponseEntity<String> delRenovation(@PathVariable Long id) {
 
         boolean isPresent = renovationRepository.existsById(id);
 
         if(isPresent) {
             renovationRepository.deleteById(id);
-            return new ResponseEntity(id, HttpStatus.OK);
+            return new ResponseEntity<>(id.toString(), HttpStatus.OK);
         }
 
-        return new ResponseEntity("not found", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("not found", HttpStatus.NOT_FOUND);
     }
 
 }

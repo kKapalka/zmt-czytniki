@@ -1,8 +1,10 @@
-package pl.zmt.reader.entities;
+package pl.zmt.reader.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.zmt.reader.entities.User;
+import pl.zmt.reader.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/user")

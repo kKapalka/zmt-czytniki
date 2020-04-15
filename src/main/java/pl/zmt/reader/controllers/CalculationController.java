@@ -1,4 +1,4 @@
-package pl.zmt.reader.entities;
+package pl.zmt.reader.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import pl.zmt.reader.entities.Calculation;
+import pl.zmt.reader.repositories.CalculationRepository;
 
 
 @RestController
