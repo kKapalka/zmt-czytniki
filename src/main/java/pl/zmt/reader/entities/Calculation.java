@@ -15,18 +15,20 @@ public class Calculation {
     @Column(name="calculation_id")
     private Long id;
 
-    //relacja
-    private Long expense_id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "expense_id")
+    private Expense expense;
 
-    //relacja
-    private Long counter_id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "counter_id")
+    private Counter counter;
 
     @Enumerated(EnumType.STRING)
     private CalculationType types;
 
-    public Calculation(Long expense_id, Long counter_id, CalculationType types) {
-        this.expense_id = expense_id;
-        this.counter_id = counter_id;
+    public Calculation(Expense expense, Counter counter, CalculationType types) {
+        this.expense = expense;
+        this.counter = counter;
         this.types = types;
     }
 }

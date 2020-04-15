@@ -27,7 +27,10 @@ public class Start {
         userRepository.save(user2);
 
         Compressor compressor = new Compressor("NO1234","Atlas Copco", "Hala 2", 3, 15, 7, CompressorType.WITH_INVERTER);
+        Compressor compressor2 = new Compressor("NO1267","Regatta", "Hala 3", 4, 18, 23, CompressorType.WITHOUT_INVERTER);
+
         compressorRepository.save(compressor);
+        compressorRepository.save(compressor2);
 
     }
 }
